@@ -75,7 +75,7 @@ export default function RootLayout({ children }: LayoutProps<"/">) {
         <link rel="icon" href="/favicon.ico" sizes="any" />
         <meta name="theme-color" content="#0F2A4A" />
       </head>
-      <body className="min-h-full flex flex-col antialiased">
+      <body className="min-h-full flex flex-col antialiased" suppressHydrationWarning>
         <Header />
         <main className="flex-1">{children}</main>
         <Footer />
