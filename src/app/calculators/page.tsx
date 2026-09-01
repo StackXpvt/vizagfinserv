@@ -84,7 +84,7 @@ export default function CalculatorsPage() {
   const [activeTab, setActiveTab] = useState("sip");
 
   return (
-    <main className="min-h-screen bg-brand-50/30 pt-24 pb-20">
+    <main className="min-h-screen bg-[#FAFBFD] pt-24 pb-20">
       <SectionWrapper>
         {/* Heading — fade in from below */}
         <motion.div

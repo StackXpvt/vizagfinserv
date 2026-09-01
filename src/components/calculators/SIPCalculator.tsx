@@ -140,7 +140,7 @@ export default function SIPCalculator({ defaultTab = "SIP", hideToggle = false }
   const setYears = activeTab === "SIP" ? setSipYears : setLumpYears;
 
   return (
-    <div className="bg-white rounded-2xl shadow-xl overflow-hidden border border-brand-100 max-w-5xl mx-auto">
+    <div className="bg-white rounded-3xl shadow-sm border border-neutral-200/80 overflow-hidden max-w-5xl mx-auto">
       {/* Tab Toggle */}
       {!hideToggle && (
         <div className="flex p-6 pb-0 md:p-8 md:pb-0">

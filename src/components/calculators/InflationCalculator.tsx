@@ -64,14 +64,14 @@ export default function InflationCalculator() {
       initial={{ opacity: 0, y: 30 }}
       animate={{ opacity: 1, y: 0 }}
       transition={{ duration: 0.5, ease: "easeOut" }}
-      className="bg-white rounded-3xl shadow-xl overflow-hidden border border-neutral-100 max-w-6xl mx-auto flex flex-col lg:flex-row"
+      className="overflow-hidden max-w-6xl mx-auto flex flex-col lg:flex-row gap-8"
     >
       {/* Left side: Inputs */}
       <motion.div
         initial={{ opacity: 0, x: -30 }}
         animate={{ opacity: 1, x: 0 }}
         transition={{ duration: 0.55, delay: 0.1, ease: "easeOut" }}
-        className="lg:w-7/12 p-8 lg:p-12 space-y-8 flex flex-col justify-between"
+        className="lg:w-7/12 bg-white rounded-3xl p-8 lg:p-12 border border-neutral-200/80 shadow-sm space-y-8 flex flex-col justify-between"
       >
         <div>
           <h2 className="text-2xl font-bold text-neutral-900 mb-2 font-heading">
@@ -185,7 +185,7 @@ export default function InflationCalculator() {
         initial={{ opacity: 0, x: 30 }}
         animate={{ opacity: 1, x: 0 }}
         transition={{ duration: 0.55, delay: 0.15, ease: "easeOut" }}
-        className="lg:w-5/12 bg-brand-900 text-white p-8 lg:p-12 flex flex-col justify-between rounded-b-3xl lg:rounded-b-none lg:rounded-r-3xl"
+        className="lg:w-5/12 bg-brand-900 text-white p-8 lg:p-12 flex flex-col justify-between rounded-3xl shadow-lg"
       >
         <div className="space-y-6">
           <div>
