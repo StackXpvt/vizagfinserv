@@ -81,7 +81,7 @@ const tabs = [
 ];
 
 export default function CalculatorsPage() {
-  const [activeTab, setActiveTab] = useState("inflation");
+  const [activeTab, setActiveTab] = useState("sip");
 
   return (
     <main className="min-h-screen bg-brand-50/30 pt-24 pb-20">
