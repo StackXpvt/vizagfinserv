@@ -1,11 +1,23 @@
 'use client';
 
-import { motion } from 'framer-motion';
+import { useState } from 'react';
+import { motion, AnimatePresence } from 'framer-motion';
 import Image from 'next/image';
 import Button from '@/components/ui/Button';
 import { ArrowRightIcon } from '@/components/ui/Icons';
 
 export default function HeroSection() {
+  const [hoveredIndex, setHoveredIndex] = useState<number | null>(null);
+
+  const chartData = [
+    { year: "Yr 1", value: "1.2x", height: 20 },
+    { year: "Yr 3", value: "1.8x", height: 35 },
+    { year: "Yr 5", value: "2.8x", height: 48 },
+    { year: "Yr 7", value: "4.2x", height: 65 },
+    { year: "Yr 9", value: "6.5x", height: 82 },
+    { year: "Yr 10", value: "10.0x", height: 100 },
+  ];
+
   return (
     <section className="relative w-full min-h-[90vh] flex items-center pt-24 pb-36 overflow-hidden bg-brand-950 text-white">
       {/* Background architectural image */}
@@ -89,7 +101,11 @@ export default function HeroSection() {
           transition={{ duration: 0.7, delay: 0.3, ease: 'easeOut' }}
           className="col-span-1 lg:col-span-4 hidden lg:flex items-end justify-end relative"
         >
-          <div className="relative w-full aspect-[3/4] bg-brand-800 rounded-2xl overflow-hidden shadow-2xl p-6 flex flex-col justify-between border border-white/10 backdrop-blur-md">
+          <motion.div 
+            whileHover={{ y: -8, scale: 1.02 }}
+            transition={{ duration: 0.3 }}
+            className="relative w-full aspect-[3/4] bg-brand-800 rounded-2xl overflow-hidden shadow-2xl p-6 flex flex-col justify-between border border-white/10 backdrop-blur-md group cursor-pointer"
+          >
             {/* Header */}
             <div className="flex justify-between items-center text-white/50 text-xs font-medium mb-4">
               <span>Long-Term View</span>
@@ -97,39 +113,121 @@ export default function HeroSection() {
             </div>
 
             {/* Bar chart */}
-            <div className="flex-grow flex items-end gap-2 w-full h-full relative">
-              {[20, 35, 45, 60, 85, 100].map((height, i) => (
-                <motion.div
-                  key={i}
-                  initial={{ height: 0 }}
-                  animate={{ height: `${height}%` }}
-                  transition={{ duration: 1, delay: 0.5 + i * 0.12, ease: 'easeOut' }}
-                  className="w-1/6 rounded-t-sm transition-all duration-700"
-                  style={{
-                    backgroundColor: `rgba(137, 184, 227, ${0.2 + i * 0.16})`,
-                    boxShadow: i === 5 ? '0 0 15px rgba(137, 184, 227, 0.5)' : 'none',
-                  }}
-                />
-              ))}
+            <div className="flex-grow flex flex-col justify-end w-full relative mt-6">
+              {/* Bars container */}
+              <div className="flex-grow flex items-end gap-2 w-full relative">
+                {chartData.map((bar, i) => {
+                  const isHovered = hoveredIndex === i;
+                  const isAnyHovered = hoveredIndex !== null;
+                  return (
+                    <div
+                      key={i}
+                      className="relative w-1/6 h-full flex flex-col justify-end cursor-pointer group/bar"
+                      onMouseEnter={() => setHoveredIndex(i)}
+                      onMouseLeave={() => setHoveredIndex(null)}
+                    >
+                      {/* Tooltip */}
+                      <AnimatePresence>
+                        {isHovered && (
+                          <motion.div
+                            initial={{ opacity: 0, y: -10, scale: 0.8 }}
+                            animate={{ opacity: 1, y: -15, scale: 1 }}
+                            exit={{ opacity: 0, y: -10, scale: 0.8 }}
+                            className="absolute left-1/2 -translate-x-1/2 bg-white text-brand-950 text-[10px] font-bold px-2 py-1 rounded shadow-md whitespace-nowrap z-20 pointer-events-none"
+                            style={{ bottom: `${bar.height}%` }}
+                          >
+                            {bar.value}
+                            <div className="absolute bottom-[-3px] left-1/2 -translate-x-1/2 w-1.5 h-1.5 bg-white rotate-45" />
+                          </motion.div>
+                        )}
+                      </AnimatePresence>
 
-              {/* Overlay curve line */}
-              <svg
-                className="absolute inset-0 w-full h-full overflow-visible pointer-events-none"
-                viewBox="0 0 100 100"
-                preserveAspectRatio="none"
-              >
-                <path
-                  d="M 5,80 C 20,70 35,65 50,50 C 65,30 80,15 95,0"
-                  fill="none"
-                  stroke="#ffffff"
-                  strokeWidth="2"
-                  strokeLinecap="round"
-                  strokeLinejoin="round"
-                  className="opacity-50"
-                />
-              </svg>
+                      {/* Bar */}
+                      <motion.div
+                        initial={{ height: 0 }}
+                        animate={{ 
+                          height: `${bar.height}%`,
+                        }}
+                        transition={{ 
+                          height: { duration: 1, delay: 0.5 + i * 0.12, ease: 'easeOut' },
+                        }}
+                        whileHover={{
+                          scaleY: 1.05,
+                          backgroundColor: '#89b8e3',
+                          boxShadow: '0 0 20px rgba(137, 184, 227, 0.8)'
+                        }}
+                        className="w-full rounded-t-sm origin-bottom transition-all duration-300"
+                        style={{
+                          backgroundColor: isHovered 
+                            ? '#89b8e3' 
+                            : (isAnyHovered 
+                              ? `rgba(137, 184, 227, 0.15)` 
+                              : `rgba(137, 184, 227, ${0.2 + i * 0.16})`),
+                          boxShadow: i === 5 && !isAnyHovered ? '0 0 15px rgba(137, 184, 227, 0.5)' : 'none',
+                        }}
+                      />
+                    </div>
+                  );
+                })}
+
+                {/* Overlay curve line */}
+                <svg
+                  className="absolute inset-0 w-full h-full overflow-visible pointer-events-none"
+                  viewBox="0 0 100 100"
+                  preserveAspectRatio="none"
+                >
+                  <motion.path
+                    d="M 5,80 C 20,70 35,65 50,50 C 65,30 80,15 95,0"
+                    fill="none"
+                    stroke={hoveredIndex !== null ? "#89b8e3" : "#ffffff"}
+                    strokeWidth="2.5"
+                    strokeLinecap="round"
+                    strokeLinejoin="round"
+                    initial={{ pathLength: 0, opacity: 0 }}
+                    animate={{ pathLength: 1, opacity: hoveredIndex !== null ? 0.9 : 0.5 }}
+                    transition={{ 
+                      pathLength: { duration: 1.5, delay: 1, ease: 'easeInOut' },
+                      stroke: { duration: 0.3 },
+                      opacity: { duration: 0.3 }
+                    }}
+                  />
+                  {/* Glowing secondary path on hover */}
+                  <AnimatePresence>
+                    {hoveredIndex !== null && (
+                      <motion.path
+                        d="M 5,80 C 20,70 35,65 50,50 C 65,30 80,15 95,0"
+                        fill="none"
+                        stroke="#89b8e3"
+                        strokeWidth="6"
+                        strokeLinecap="round"
+                        strokeLinejoin="round"
+                        className="blur-sm opacity-50"
+                        initial={{ opacity: 0 }}
+                        animate={{ opacity: 0.5 }}
+                        exit={{ opacity: 0 }}
+                        transition={{ duration: 0.3 }}
+                      />
+                    )}
+                  </AnimatePresence>
+                </svg>
+              </div>
+
+              {/* Labels Row */}
+              <div className="flex justify-between w-full mt-3 pt-2 border-t border-white/5">
+                {chartData.map((bar, i) => (
+                  <span 
+                    key={i} 
+                    className="w-1/6 text-center text-[10px] font-medium transition-colors duration-300"
+                    style={{
+                      color: hoveredIndex === i ? '#89b8e3' : 'rgba(255, 255, 255, 0.4)'
+                    }}
+                  >
+                    {bar.year}
+                  </span>
+                ))}
+              </div>
             </div>
-          </div>
+          </motion.div>
         </motion.div>
       </div>
     </section>
