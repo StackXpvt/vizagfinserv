@@ -24,7 +24,7 @@ export default function InflationCalculator() {
         width: 18px; 
         height: 18px; 
         border-radius: 50%; 
-        background: #0F2A4A; 
+        background: #89B8E3; 
         border: 2px solid white; 
         box-shadow: 0 1px 4px rgba(0,0,0,0.3); 
         cursor: pointer; 
@@ -33,7 +33,7 @@ export default function InflationCalculator() {
         width: 18px; 
         height: 18px; 
         border-radius: 50%; 
-        background: #0F2A4A; 
+        background: #89B8E3; 
         border: 2px solid white; 
         box-shadow: 0 1px 4px rgba(0,0,0,0.3); 
         cursor: pointer; 
@@ -56,7 +56,7 @@ export default function InflationCalculator() {
 
   const sliderTrackBg = (value: number, min: number, max: number) => {
     const pct = ((value - min) / (max - min)) * 100;
-    return `linear-gradient(to right, #0F2A4A ${pct}%, #E2E8F0 ${pct}%)`;
+    return `linear-gradient(to right, #89B8E3 ${pct}%, rgba(255, 255, 255, 0.15) ${pct}%)`;
   };
 
   return (
@@ -71,13 +71,13 @@ export default function InflationCalculator() {
         initial={{ opacity: 0, x: -30 }}
         animate={{ opacity: 1, x: 0 }}
         transition={{ duration: 0.55, delay: 0.1, ease: "easeOut" }}
-        className="lg:w-7/12 bg-white rounded-2xl p-8 lg:p-10 border border-neutral-200 shadow-sm hover:border-brand-300 transition-all duration-300 space-y-8 flex flex-col justify-between"
+        className="lg:w-7/12 bg-brand-900/90 backdrop-blur-md rounded-2xl p-8 lg:p-10 border border-white/10 shadow-xl space-y-8 flex flex-col justify-between"
       >
         <div>
-          <h2 className="text-2xl font-bold text-brand-900 mb-2 font-heading">
+          <h2 className="text-2xl font-bold text-white mb-2 font-heading">
             Inflation Calculator
           </h2>
-          <p className="text-neutral-600 text-sm mb-8">
+          <p className="text-brand-200/80 text-sm mb-8">
             Understand how inflation erodes the purchasing power of your money over time.
           </p>
 
@@ -85,10 +85,10 @@ export default function InflationCalculator() {
             {/* Input 1: Current Amount */}
             <div className="space-y-3">
               <div className="flex justify-between items-center">
-                <label className="text-brand-900 font-semibold text-sm">
+                <label className="text-brand-100 font-semibold text-sm">
                   Current Amount / Expense
                 </label>
-                <span className="bg-brand-50 text-brand-700 text-xs font-bold px-3.5 py-1.5 rounded-lg border border-brand-100">
+                <span className="bg-white/10 text-brand-300 text-xs font-bold px-3.5 py-1.5 rounded-lg border border-white/10">
                   ₹{formatIndian(currentValue)}
                 </span>
               </div>
@@ -112,7 +112,7 @@ export default function InflationCalculator() {
                     if (!isNaN(num)) setCurrentValue(Math.min(num, 10000000));
                     else setCurrentValue(1000);
                   }}
-                  className="w-28 text-right px-3 py-1.5 text-xs font-semibold text-brand-900 bg-brand-50/50 border border-brand-100 rounded-lg outline-none focus:border-brand-500"
+                  className="w-28 text-right px-3 py-1.5 text-xs font-semibold text-white bg-white/5 border border-white/10 rounded-lg outline-none focus:border-brand-300"
                 />
               </div>
             </div>
@@ -120,10 +120,10 @@ export default function InflationCalculator() {
             {/* Input 2: Inflation Rate */}
             <div className="space-y-3">
               <div className="flex justify-between items-center">
-                <label className="text-brand-900 font-semibold text-sm">
+                <label className="text-brand-100 font-semibold text-sm">
                   Expected Inflation Rate
                 </label>
-                <span className="bg-brand-50 text-brand-700 text-xs font-bold px-3.5 py-1.5 rounded-lg border border-brand-100">
+                <span className="bg-white/10 text-brand-300 text-xs font-bold px-3.5 py-1.5 rounded-lg border border-white/10">
                   {inflationRate}%
                 </span>
               </div>
@@ -142,7 +142,7 @@ export default function InflationCalculator() {
                   type="number"
                   value={inflationRate}
                   onChange={(e) => setInflationRate(Number(e.target.value))}
-                  className="inf-num-input w-24 text-right px-3 py-1.5 text-xs font-semibold text-brand-900 bg-brand-50/50 border border-brand-100 rounded-lg outline-none focus:border-brand-500"
+                  className="inf-num-input w-24 text-right px-3 py-1.5 text-xs font-semibold text-white bg-white/5 border border-white/10 rounded-lg outline-none focus:border-brand-300"
                 />
               </div>
             </div>
@@ -150,10 +150,10 @@ export default function InflationCalculator() {
             {/* Input 3: Years */}
             <div className="space-y-3">
               <div className="flex justify-between items-center">
-                <label className="text-brand-900 font-semibold text-sm">
+                <label className="text-brand-100 font-semibold text-sm">
                   Years in Future
                 </label>
-                <span className="bg-brand-50 text-brand-700 text-xs font-bold px-3.5 py-1.5 rounded-lg border border-brand-100">
+                <span className="bg-white/10 text-brand-300 text-xs font-bold px-3.5 py-1.5 rounded-lg border border-white/10">
                   {years} years
                 </span>
               </div>
@@ -172,7 +172,7 @@ export default function InflationCalculator() {
                   type="number"
                   value={years}
                   onChange={(e) => setYears(Number(e.target.value))}
-                  className="inf-num-input w-24 text-right px-3 py-1.5 text-xs font-semibold text-brand-900 bg-brand-50/50 border border-brand-100 rounded-lg outline-none focus:border-brand-500"
+                  className="inf-num-input w-24 text-right px-3 py-1.5 text-xs font-semibold text-white bg-white/5 border border-white/10 rounded-lg outline-none focus:border-brand-300"
                 />
               </div>
             </div>
@@ -185,7 +185,7 @@ export default function InflationCalculator() {
         initial={{ opacity: 0, x: 30 }}
         animate={{ opacity: 1, x: 0 }}
         transition={{ duration: 0.55, delay: 0.15, ease: "easeOut" }}
-        className="lg:w-5/12 bg-brand-900 text-white p-8 lg:p-10 flex flex-col justify-between rounded-2xl shadow-xl border border-brand-800"
+        className="lg:w-5/12 bg-brand-950 text-white p-8 lg:p-10 flex flex-col justify-between rounded-2xl shadow-xl border border-white/10"
       >
         <div className="space-y-6">
           <div>

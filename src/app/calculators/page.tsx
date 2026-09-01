@@ -84,7 +84,10 @@ export default function CalculatorsPage() {
   const [activeTab, setActiveTab] = useState("sip");
 
   return (
-    <main className="min-h-screen bg-brand-50/40 pt-24 pb-20">
+    <main className="min-h-screen bg-brand-950 pt-24 pb-20 text-white relative overflow-hidden">
+      {/* Decorative gradient orb */}
+      <div className="absolute right-[-10%] top-[-20%] w-[60vw] h-[60vw] rounded-full bg-gradient-to-br from-brand-800 to-transparent blur-3xl opacity-30 mix-blend-screen pointer-events-none" />
+
       <SectionWrapper>
         {/* Heading — fade in from below */}
         <motion.div
@@ -98,15 +101,16 @@ export default function CalculatorsPage() {
             title="Financial Calculators"
             subtitle="Use our comprehensive suite of calculators to plan your financial goals and estimate returns."
             align="center"
+            light={true}
           />
         </motion.div>
 
-        {/* Tab bar — matching ServiceCard theme */}
+        {/* Tab bar — dark theme */}
         <motion.div
           initial={{ opacity: 0, y: 16 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.5, delay: 0.2, ease: "easeOut" }}
-          className="bg-white rounded-2xl p-3 md:p-4 shadow-sm border border-neutral-200/80 max-w-6xl mx-auto mb-10 overflow-x-auto"
+          className="bg-brand-900/80 backdrop-blur-md rounded-2xl p-3 md:p-4 shadow-xl border border-white/10 max-w-6xl mx-auto mb-10 overflow-x-auto"
         >
           <div className="flex items-center gap-1.5 md:gap-2 min-w-max">
             {tabs.map((tab, i) => {
@@ -122,8 +126,8 @@ export default function CalculatorsPage() {
                   onClick={() => setActiveTab(tab.id)}
                   className={`flex items-center gap-2 px-5 py-2.5 rounded-xl text-xs md:text-sm font-semibold transition-all duration-300 cursor-pointer ${
                     isActive
-                      ? "bg-brand-800 text-white shadow-md shadow-brand-800/20 ring-2 ring-brand-800"
-                      : "text-brand-800 bg-brand-50/50 hover:bg-brand-100/70 border border-brand-100/60"
+                      ? "bg-brand-300 text-brand-950 shadow-lg shadow-brand-300/20 font-bold"
+                      : "text-brand-200/80 bg-white/5 hover:bg-white/10 hover:text-white border border-white/10"
                   }`}
                 >
                   <span className="text-sm">{tab.icon}</span>
@@ -145,12 +149,12 @@ export default function CalculatorsPage() {
           >
             {activeTab === "inflation" && <InflationCalculator />}
             {activeTab === "sip" && (
-              <Suspense fallback={<div className="h-96 flex items-center justify-center text-neutral-500 font-medium">Loading Calculator...</div>}>
+              <Suspense fallback={<div className="h-96 flex items-center justify-center text-brand-200 font-medium">Loading Calculator...</div>}>
                 <SIPCalculator defaultTab="SIP" hideToggle />
               </Suspense>
             )}
             {activeTab === "lumpsum" && (
-              <Suspense fallback={<div className="h-96 flex items-center justify-center text-neutral-500 font-medium">Loading Calculator...</div>}>
+              <Suspense fallback={<div className="h-96 flex items-center justify-center text-brand-200 font-medium">Loading Calculator...</div>}>
                 <SIPCalculator defaultTab="Lumpsum" hideToggle />
               </Suspense>
             )}

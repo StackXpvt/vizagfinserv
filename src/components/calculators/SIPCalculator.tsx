@@ -53,21 +53,21 @@ export default function SIPCalculator({ defaultTab = "SIP", hideToggle = false }
       .sip-slider::-webkit-slider-thumb {
         -webkit-appearance: none;
         appearance: none;
-        width: 24px;
-        height: 24px;
+        width: 18px;
+        height: 18px;
         border-radius: 50%;
-        background: #3B82C4;
-        border: 4px solid white;
-        box-shadow: 0 2px 6px rgba(0,0,0,0.2);
+        background: #89B8E3;
+        border: 2px solid white;
+        box-shadow: 0 1px 4px rgba(0,0,0,0.3);
         cursor: pointer;
       }
       .sip-slider::-moz-range-thumb {
-        width: 16px;
-        height: 16px;
+        width: 18px;
+        height: 18px;
         border-radius: 50%;
-        background: #3B82C4;
-        border: 4px solid white;
-        box-shadow: 0 2px 6px rgba(0,0,0,0.2);
+        background: #89B8E3;
+        border: 2px solid white;
+        box-shadow: 0 1px 4px rgba(0,0,0,0.3);
         cursor: pointer;
         border: none;
       }
@@ -139,15 +139,20 @@ export default function SIPCalculator({ defaultTab = "SIP", hideToggle = false }
   const years = activeTab === "SIP" ? sipYears : lumpYears;
   const setYears = activeTab === "SIP" ? setSipYears : setLumpYears;
 
+  const sliderTrackBg = (value: number, min: number, max: number) => {
+    const pct = ((value - min) / (max - min)) * 100;
+    return `linear-gradient(to right, #89B8E3 ${pct}%, rgba(255, 255, 255, 0.15) ${pct}%)`;
+  };
+
   return (
     <div className="overflow-hidden max-w-6xl mx-auto flex flex-col lg:flex-row gap-8">
       {/* Left side: Inputs */}
-      <div className="lg:w-7/12 bg-white rounded-2xl p-8 lg:p-10 border border-neutral-200 shadow-sm hover:border-brand-300 transition-all duration-300 space-y-8 flex flex-col justify-between">
+      <div className="lg:w-7/12 bg-brand-900/90 backdrop-blur-md rounded-2xl p-8 lg:p-10 border border-white/10 shadow-xl space-y-8 flex flex-col justify-between">
         <div>
-          <h2 className="text-2xl font-bold text-brand-900 mb-2 font-heading">
+          <h2 className="text-2xl font-bold text-white mb-2 font-heading">
             {activeTab === "SIP" ? "SIP Calculator" : "Lumpsum Calculator"}
           </h2>
-          <p className="text-neutral-600 text-sm mb-8">
+          <p className="text-brand-200/80 text-sm mb-8">
             {activeTab === "SIP"
               ? "Calculate the future value of your systematic monthly investments."
               : "Estimate returns on one-time lump sum mutual fund investments."}
@@ -157,10 +162,10 @@ export default function SIPCalculator({ defaultTab = "SIP", hideToggle = false }
             {/* Input 1: Investment Amount */}
             <div className="space-y-3">
               <div className="flex justify-between items-center">
-                <label className="text-brand-900 font-semibold text-sm">
+                <label className="text-brand-100 font-semibold text-sm">
                   {activeTab === "SIP" ? "Monthly Investment" : "Total Investment"}
                 </label>
-                <span className="bg-brand-50 text-brand-700 text-xs font-bold px-3.5 py-1.5 rounded-lg border border-brand-100">
+                <span className="bg-white/10 text-brand-300 text-xs font-bold px-3.5 py-1.5 rounded-lg border border-white/10">
                   ₹{formatIndian(investment)}
                 </span>
               </div>
@@ -184,7 +189,7 @@ export default function SIPCalculator({ defaultTab = "SIP", hideToggle = false }
                     if (!isNaN(num)) setInvestment(Math.min(num, investMax));
                     else setInvestment(investMin);
                   }}
-                  className="w-28 text-right px-3 py-1.5 text-xs font-semibold text-brand-900 bg-brand-50/50 border border-brand-100 rounded-lg outline-none focus:border-brand-500"
+                  className="w-28 text-right px-3 py-1.5 text-xs font-semibold text-white bg-white/5 border border-white/10 rounded-lg outline-none focus:border-brand-300"
                 />
               </div>
             </div>
@@ -192,10 +197,10 @@ export default function SIPCalculator({ defaultTab = "SIP", hideToggle = false }
             {/* Input 2: Expected Return Rate */}
             <div className="space-y-3">
               <div className="flex justify-between items-center">
-                <label className="text-brand-900 font-semibold text-sm">
+                <label className="text-brand-100 font-semibold text-sm">
                   Expected Return Rate (p.a)
                 </label>
-                <span className="bg-brand-50 text-brand-700 text-xs font-bold px-3.5 py-1.5 rounded-lg border border-brand-100">
+                <span className="bg-white/10 text-brand-300 text-xs font-bold px-3.5 py-1.5 rounded-lg border border-white/10">
                   {rate}%
                 </span>
               </div>
@@ -214,7 +219,7 @@ export default function SIPCalculator({ defaultTab = "SIP", hideToggle = false }
                   type="number"
                   value={rate}
                   onChange={(e) => setRate(Number(e.target.value))}
-                  className="sip-num-input w-24 text-right px-3 py-1.5 text-xs font-semibold text-brand-900 bg-brand-50/50 border border-brand-100 rounded-lg outline-none focus:border-brand-500"
+                  className="sip-num-input w-24 text-right px-3 py-1.5 text-xs font-semibold text-white bg-white/5 border border-white/10 rounded-lg outline-none focus:border-brand-300"
                 />
               </div>
             </div>
@@ -222,10 +227,10 @@ export default function SIPCalculator({ defaultTab = "SIP", hideToggle = false }
             {/* Input 3: Time Period */}
             <div className="space-y-3">
               <div className="flex justify-between items-center">
-                <label className="text-brand-900 font-semibold text-sm">
+                <label className="text-brand-100 font-semibold text-sm">
                   Time Period
                 </label>
-                <span className="bg-brand-50 text-brand-700 text-xs font-bold px-3.5 py-1.5 rounded-lg border border-brand-100">
+                <span className="bg-white/10 text-brand-300 text-xs font-bold px-3.5 py-1.5 rounded-lg border border-white/10">
                   {years} years
                 </span>
               </div>
@@ -244,7 +249,7 @@ export default function SIPCalculator({ defaultTab = "SIP", hideToggle = false }
                   type="number"
                   value={years}
                   onChange={(e) => setYears(Number(e.target.value))}
-                  className="sip-num-input w-24 text-right px-3 py-1.5 text-xs font-semibold text-brand-900 bg-brand-50/50 border border-brand-100 rounded-lg outline-none focus:border-brand-500"
+                  className="sip-num-input w-24 text-right px-3 py-1.5 text-xs font-semibold text-white bg-white/5 border border-white/10 rounded-lg outline-none focus:border-brand-300"
                 />
               </div>
             </div>
@@ -253,7 +258,7 @@ export default function SIPCalculator({ defaultTab = "SIP", hideToggle = false }
       </div>
 
       {/* Right Side: Dark Navy Panel */}
-      <div className="lg:w-5/12 bg-brand-900 text-white p-8 lg:p-10 flex flex-col justify-between rounded-2xl shadow-xl border border-brand-800">
+      <div className="lg:w-5/12 bg-brand-950 text-white p-8 lg:p-10 flex flex-col justify-between rounded-2xl shadow-xl border border-white/10">
         <div className="space-y-6">
           <div>
             <span className="text-[11px] font-bold tracking-wider text-brand-300 uppercase">
@@ -268,16 +273,16 @@ export default function SIPCalculator({ defaultTab = "SIP", hideToggle = false }
           </div>
 
           {/* Breakdown Box */}
-          <div className="bg-brand-800/70 rounded-xl p-5 border border-brand-700/50 space-y-3.5 text-xs">
+          <div className="bg-brand-900/80 rounded-xl p-5 border border-white/10 space-y-3.5 text-xs">
             <div className="flex justify-between items-center text-brand-100">
               <span>Invested Amount</span>
               <span className="font-semibold text-white">{formatCurrency(investedAmount)}</span>
             </div>
-            <div className="border-t border-brand-700/50 pt-2.5 flex justify-between items-center text-brand-100">
+            <div className="border-t border-white/10 pt-2.5 flex justify-between items-center text-brand-100">
               <span>Estimated Returns</span>
               <span className="font-semibold text-gold-400">{formatCurrency(estReturns)}</span>
             </div>
-            <div className="border-t border-brand-700/50 pt-2.5 flex justify-between items-center text-sm font-bold text-white">
+            <div className="border-t border-white/10 pt-2.5 flex justify-between items-center text-sm font-bold text-white">
               <span>Total Value</span>
               <span>{formatCurrency(totalValue)}</span>
             </div>
@@ -287,7 +292,7 @@ export default function SIPCalculator({ defaultTab = "SIP", hideToggle = false }
           <div className="flex items-center justify-center pt-2">
             <div className="relative w-40 h-40">
               <svg width="100%" height="100%" viewBox="0 0 200 200" className="transform -rotate-90">
-                <circle cx="100" cy="100" r={radius} fill="transparent" stroke="#163A64" strokeWidth="24" />
+                <circle cx="100" cy="100" r={radius} fill="transparent" stroke="rgba(255,255,255,0.1)" strokeWidth="24" />
                 <circle
                   cx="100"
                   cy="100"
