@@ -116,7 +116,7 @@ export default function SIPCalculator({ defaultTab = "SIP", hideToggle = false }
   // Slider track background helper
   const sliderTrackBg = (value: number, min: number, max: number) => {
     const pct = ((value - min) / (max - min)) * 100;
-    return `linear-gradient(to right, #3B82C4 ${pct}%, #E2E8F0 ${pct}%)`;
+    return `linear-gradient(to right, #89B8E3 ${pct}%, rgba(255, 255, 255, 0.15) ${pct}%)`;
   };
 
   // SVG Doughnut Chart calculations
@@ -138,11 +138,6 @@ export default function SIPCalculator({ defaultTab = "SIP", hideToggle = false }
 
   const years = activeTab === "SIP" ? sipYears : lumpYears;
   const setYears = activeTab === "SIP" ? setSipYears : setLumpYears;
-
-  const sliderTrackBg = (value: number, min: number, max: number) => {
-    const pct = ((value - min) / (max - min)) * 100;
-    return `linear-gradient(to right, #89B8E3 ${pct}%, rgba(255, 255, 255, 0.15) ${pct}%)`;
-  };
 
   return (
     <div className="overflow-hidden max-w-6xl mx-auto flex flex-col lg:flex-row gap-8">
