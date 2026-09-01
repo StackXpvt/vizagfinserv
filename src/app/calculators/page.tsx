@@ -84,7 +84,7 @@ export default function CalculatorsPage() {
   const [activeTab, setActiveTab] = useState("sip");
 
   return (
-    <main className="min-h-screen bg-[#FAFBFD] pt-24 pb-20">
+    <main className="min-h-screen bg-brand-50/40 pt-24 pb-20">
       <SectionWrapper>
         {/* Heading — fade in from below */}
         <motion.div
@@ -101,7 +101,7 @@ export default function CalculatorsPage() {
           />
         </motion.div>
 
-        {/* Tab bar — fade in + staggered children */}
+        {/* Tab bar — matching ServiceCard theme */}
         <motion.div
           initial={{ opacity: 0, y: 16 }}
           animate={{ opacity: 1, y: 0 }}
@@ -120,10 +120,10 @@ export default function CalculatorsPage() {
                   whileHover={{ y: -1 }}
                   whileTap={{ scale: 0.97 }}
                   onClick={() => setActiveTab(tab.id)}
-                  className={`flex items-center gap-2 px-4 py-2.5 rounded-xl text-xs md:text-sm font-semibold transition-all duration-200 cursor-pointer ${
+                  className={`flex items-center gap-2 px-5 py-2.5 rounded-xl text-xs md:text-sm font-semibold transition-all duration-300 cursor-pointer ${
                     isActive
-                      ? "bg-brand-900 text-white shadow-sm ring-2 ring-brand-900"
-                      : "text-neutral-600 hover:text-neutral-900 hover:bg-neutral-100"
+                      ? "bg-brand-800 text-white shadow-md shadow-brand-800/20 ring-2 ring-brand-800"
+                      : "text-brand-800 bg-brand-50/50 hover:bg-brand-100/70 border border-brand-100/60"
                   }`}
                 >
                   <span className="text-sm">{tab.icon}</span>
