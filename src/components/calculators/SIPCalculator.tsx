@@ -140,216 +140,185 @@ export default function SIPCalculator({ defaultTab = "SIP", hideToggle = false }
   const setYears = activeTab === "SIP" ? setSipYears : setLumpYears;
 
   return (
-    <div className="bg-white rounded-3xl shadow-sm border border-neutral-200/80 overflow-hidden max-w-5xl mx-auto">
-      {/* Tab Toggle */}
-      {!hideToggle && (
-        <div className="flex p-6 pb-0 md:p-8 md:pb-0">
-          <div className="flex bg-brand-50 p-1 rounded-full">
-            {(["SIP", "Lumpsum"] as const).map((tab) => (
-              <button
-                key={tab}
-                onClick={() => setActiveTab(tab)}
-                className={`px-8 py-2.5 rounded-full text-sm font-semibold transition-all duration-300 cursor-pointer ${
-                  activeTab === tab
-                    ? "bg-brand-900 text-white shadow-md"
-                    : "text-brand-800 hover:bg-brand-100"
-                }`}
-              >
-                {tab}
-              </button>
-            ))}
-          </div>
-        </div>
-      )}
+    <div className="overflow-hidden max-w-6xl mx-auto flex flex-col lg:flex-row gap-8">
+      {/* Left side: Inputs */}
+      <div className="lg:w-7/12 bg-white rounded-3xl p-8 lg:p-12 border border-neutral-200/80 shadow-sm space-y-8 flex flex-col justify-between">
+        <div>
+          <h2 className="text-2xl font-bold text-neutral-900 mb-2 font-heading">
+            {activeTab === "SIP" ? "SIP Calculator" : "Lumpsum Calculator"}
+          </h2>
+          <p className="text-neutral-500 text-sm mb-8">
+            {activeTab === "SIP"
+              ? "Calculate the future value of your systematic monthly investments."
+              : "Estimate returns on one-time lump sum mutual fund investments."}
+          </p>
 
-      <div className="p-6 md:p-8 md:pt-6 grid grid-cols-1 lg:grid-cols-12 gap-10">
-        {/* Left Side: Inputs & Results */}
-        <div className="lg:col-span-7 space-y-8">
-          {/* Investment Amount */}
-          <div className="space-y-3">
-            <div className="flex justify-between items-center">
-              <label className="text-neutral-600 font-medium">
-                {activeTab === "SIP" ? "Monthly Investment" : "Total Investment"}
-              </label>
-              <div className="bg-brand-50 flex items-center px-4 py-2 rounded-lg border border-brand-100 min-w-[10rem]">
-                <span className="text-brand-900 font-semibold mr-1">₹</span>
+          <div className="space-y-8">
+            {/* Input 1: Investment Amount */}
+            <div className="space-y-3">
+              <div className="flex justify-between items-center">
+                <label className="text-neutral-800 font-semibold text-sm">
+                  {activeTab === "SIP" ? "Monthly Investment" : "Total Investment"}
+                </label>
+                <span className="bg-brand-50 text-brand-900 text-xs font-bold px-3 py-1 rounded-full">
+                  ₹{formatIndian(investment)}
+                </span>
+              </div>
+              <input
+                type="range"
+                min={investMin}
+                max={investMax}
+                step={investStep}
+                value={investment}
+                onChange={(e) => setInvestment(Number(e.target.value))}
+                className="sip-slider w-full h-2 rounded-lg appearance-none cursor-pointer"
+                style={{ background: sliderTrackBg(investment, investMin, investMax) }}
+              />
+              <div className="flex justify-end">
                 <input
                   type="text"
                   value={formatIndian(investment)}
                   onChange={(e) => {
                     const raw = e.target.value.replace(/[^0-9]/g, "");
                     const num = parseInt(raw, 10);
-                    if (!isNaN(num)) {
-                      setInvestment(Math.min(num, investMax));
-                    } else {
-                      setInvestment(investMin);
-                    }
+                    if (!isNaN(num)) setInvestment(Math.min(num, investMax));
+                    else setInvestment(investMin);
                   }}
-                  className="bg-transparent outline-none text-brand-900 font-semibold w-full text-right"
+                  className="w-28 text-right px-3 py-1.5 text-xs font-medium text-neutral-700 bg-neutral-50 border border-neutral-200 rounded-lg outline-none focus:border-brand-600"
                 />
               </div>
             </div>
-            <input
-              type="range"
-              min={investMin}
-              max={investMax}
-              step={investStep}
-              value={investment}
-              onChange={(e) => setInvestment(Number(e.target.value))}
-              className="sip-slider w-full h-2 rounded-lg appearance-none cursor-pointer"
-              style={{ background: sliderTrackBg(investment, investMin, investMax) }}
-            />
-          </div>
 
-          {/* Return Rate */}
-          <div className="space-y-3">
-            <div className="flex justify-between items-center">
-              <label className="text-neutral-600 font-medium">Expected Return Rate (p.a)</label>
-              <div className="bg-brand-50 flex items-center px-4 py-2 rounded-lg border border-brand-100 w-28">
+            {/* Input 2: Expected Return Rate */}
+            <div className="space-y-3">
+              <div className="flex justify-between items-center">
+                <label className="text-neutral-800 font-semibold text-sm">
+                  Expected Return Rate (p.a)
+                </label>
+                <span className="bg-brand-50 text-brand-900 text-xs font-bold px-3 py-1 rounded-full">
+                  {rate}%
+                </span>
+              </div>
+              <input
+                type="range"
+                min={1}
+                max={30}
+                step={0.1}
+                value={rate}
+                onChange={(e) => setRate(Number(e.target.value))}
+                className="sip-slider w-full h-2 rounded-lg appearance-none cursor-pointer"
+                style={{ background: sliderTrackBg(rate, 1, 30) }}
+              />
+              <div className="flex justify-end">
                 <input
                   type="number"
-                  min={1}
-                  max={30}
-                  step={0.1}
                   value={rate}
-                  onChange={(e) => {
-                    const val = Number(e.target.value);
-                    setRate(Math.min(Math.max(val, 0), 30));
-                  }}
-                  className="sip-num-input bg-transparent outline-none text-brand-900 font-semibold w-full text-right"
+                  onChange={(e) => setRate(Number(e.target.value))}
+                  className="sip-num-input w-24 text-right px-3 py-1.5 text-xs font-medium text-neutral-700 bg-neutral-50 border border-neutral-200 rounded-lg outline-none focus:border-brand-600"
                 />
-                <span className="text-brand-900 font-semibold ml-1">%</span>
               </div>
             </div>
-            <input
-              type="range"
-              min={1}
-              max={30}
-              step={0.1}
-              value={rate}
-              onChange={(e) => setRate(Number(e.target.value))}
-              className="sip-slider w-full h-2 rounded-lg appearance-none cursor-pointer"
-              style={{ background: sliderTrackBg(rate, 1, 30) }}
-            />
-          </div>
 
-          {/* Time Period */}
-          <div className="space-y-3">
-            <div className="flex justify-between items-center">
-              <label className="text-neutral-600 font-medium">Time Period</label>
-              <div className="bg-brand-50 flex items-center px-4 py-2 rounded-lg border border-brand-100 w-28">
+            {/* Input 3: Time Period */}
+            <div className="space-y-3">
+              <div className="flex justify-between items-center">
+                <label className="text-neutral-800 font-semibold text-sm">
+                  Time Period
+                </label>
+                <span className="bg-brand-50 text-brand-900 text-xs font-bold px-3 py-1 rounded-full">
+                  {years} years
+                </span>
+              </div>
+              <input
+                type="range"
+                min={1}
+                max={40}
+                step={1}
+                value={years}
+                onChange={(e) => setYears(Number(e.target.value))}
+                className="sip-slider w-full h-2 rounded-lg appearance-none cursor-pointer"
+                style={{ background: sliderTrackBg(years, 1, 40) }}
+              />
+              <div className="flex justify-end">
                 <input
                   type="number"
-                  min={1}
-                  max={40}
-                  step={1}
                   value={years}
-                  onChange={(e) => {
-                    const val = Number(e.target.value);
-                    setYears(Math.min(Math.max(val, 1), 40));
-                  }}
-                  className="sip-num-input bg-transparent outline-none text-brand-900 font-semibold w-full text-right"
+                  onChange={(e) => setYears(Number(e.target.value))}
+                  className="sip-num-input w-24 text-right px-3 py-1.5 text-xs font-medium text-neutral-700 bg-neutral-50 border border-neutral-200 rounded-lg outline-none focus:border-brand-600"
                 />
-                <span className="text-brand-900 font-semibold ml-2">Yr</span>
               </div>
             </div>
-            <input
-              type="range"
-              min={1}
-              max={40}
-              step={1}
-              value={years}
-              onChange={(e) => setYears(Number(e.target.value))}
-              className="sip-slider w-full h-2 rounded-lg appearance-none cursor-pointer"
-              style={{ background: sliderTrackBg(years, 1, 40) }}
-            />
+          </div>
+        </div>
+      </div>
+
+      {/* Right Side: Dark Navy Panel */}
+      <div className="lg:w-5/12 bg-brand-900 text-white p-8 lg:p-12 flex flex-col justify-between rounded-3xl shadow-lg">
+        <div className="space-y-6">
+          <div>
+            <span className="text-[11px] font-bold tracking-wider text-brand-200 uppercase">
+              EXPECTED CORPUS
+            </span>
+            <div className="text-4xl lg:text-5xl font-extrabold tracking-tight mt-1 text-white">
+              {formatCurrency(totalValue)}
+            </div>
+            <p className="text-xs text-brand-200/80 mt-1">
+              Total wealth accumulated in {years} years
+            </p>
           </div>
 
-          {/* Results Summary */}
-          <div className="mt-8 pt-6 border-t border-neutral-100 space-y-4">
-            <div className="flex justify-between items-center">
-              <span className="text-neutral-500">Invested amount</span>
-              <span className="font-semibold text-neutral-800">
-                {formatCurrency(investedAmount)}
-              </span>
+          {/* Breakdown Box */}
+          <div className="bg-brand-800/80 rounded-2xl p-5 border border-brand-700/50 space-y-3.5 text-xs">
+            <div className="flex justify-between items-center text-brand-100">
+              <span>Invested Amount</span>
+              <span className="font-semibold text-white">{formatCurrency(investedAmount)}</span>
             </div>
-            <div className="flex justify-between items-center">
-              <span className="text-neutral-500">Est. returns</span>
-              <span className="font-semibold text-neutral-800">
-                {formatCurrency(estReturns)}
-              </span>
+            <div className="border-t border-brand-700/50 pt-2.5 flex justify-between items-center text-brand-100">
+              <span>Estimated Returns</span>
+              <span className="font-semibold text-gold-400">{formatCurrency(estReturns)}</span>
             </div>
-            <div className="flex justify-between items-center pt-2 border-t border-neutral-100">
-              <span className="text-neutral-800 font-medium text-lg">Total value</span>
-              <span className="font-bold text-xl text-gold-500">
-                {formatCurrency(totalValue)}
-              </span>
+            <div className="border-t border-brand-700/50 pt-2.5 flex justify-between items-center text-sm font-bold text-white">
+              <span>Total Value</span>
+              <span>{formatCurrency(totalValue)}</span>
             </div>
+          </div>
 
-            <div className="pt-4">
-              <Button href="/contact" className="w-full justify-center" size="lg">
-                Start Investing
-              </Button>
+          {/* Doughnut Chart Progress Visual */}
+          <div className="flex items-center justify-center pt-2">
+            <div className="relative w-40 h-40">
+              <svg width="100%" height="100%" viewBox="0 0 200 200" className="transform -rotate-90">
+                <circle cx="100" cy="100" r={radius} fill="transparent" stroke="#163A64" strokeWidth="24" />
+                <circle
+                  cx="100"
+                  cy="100"
+                  r={radius}
+                  fill="transparent"
+                  stroke="#D4A537"
+                  strokeWidth="24"
+                  strokeDasharray={circumference}
+                  strokeDashoffset={investedDashoffset}
+                  strokeLinecap="butt"
+                  className="transition-all duration-300"
+                />
+              </svg>
+              <div className="absolute inset-0 flex flex-col items-center justify-center text-center">
+                <span className="text-[9px] text-brand-200 uppercase font-semibold">Gain Ratio</span>
+                <span className="text-sm font-bold text-gold-400">
+                  {Math.round((estReturns / (totalValue || 1)) * 100)}%
+                </span>
+              </div>
             </div>
           </div>
         </div>
 
-        {/* Right Side: Doughnut Chart */}
-        <div className="lg:col-span-5 flex flex-col items-center justify-center pt-4 lg:pt-0">
-          <div className="relative w-56 h-56 md:w-64 md:h-64 mb-8">
-            <svg
-              width="100%"
-              height="100%"
-              viewBox="0 0 200 200"
-              className="transform -rotate-90"
-            >
-              {/* Returns segment (full circle behind) */}
-              <circle
-                cx="100"
-                cy="100"
-                r={radius}
-                fill="transparent"
-                stroke="#163A64"
-                strokeWidth="30"
-                className="transition-all duration-150 ease-out"
-              />
-              {/* Invested segment (foreground arc) */}
-              <circle
-                cx="100"
-                cy="100"
-                r={radius}
-                fill="transparent"
-                stroke="#5A9BD5"
-                strokeWidth="30"
-                strokeDasharray={circumference}
-                strokeDashoffset={investedDashoffset}
-                strokeLinecap="butt"
-                className="transition-all duration-150 ease-out"
-              />
-            </svg>
-
-            {/* Center label */}
-            <div className="absolute inset-0 flex flex-col items-center justify-center text-center">
-              <span className="text-[10px] text-neutral-400 uppercase tracking-[0.15em] font-semibold mb-1">
-                Total Value
-              </span>
-              <span className="text-lg md:text-xl font-bold text-gold-500">
-                {formatCurrency(totalValue)}
-              </span>
-            </div>
-          </div>
-
-          {/* Legend */}
-          <div className="flex items-center gap-6">
-            <div className="flex items-center gap-2">
-              <div className="w-3 h-3 rounded-full bg-[#5A9BD5]" />
-              <span className="text-sm text-neutral-600">Invested</span>
-            </div>
-            <div className="flex items-center gap-2">
-              <div className="w-3 h-3 rounded-full bg-[#163A64]" />
-              <span className="text-sm text-neutral-600">Returns</span>
-            </div>
-          </div>
+        {/* CTA Button */}
+        <div className="mt-6">
+          <a
+            href="/contact"
+            className="w-full bg-gold-500 hover:bg-gold-600 text-white font-semibold py-3.5 px-6 rounded-xl text-center block text-sm transition-colors shadow-lg shadow-brand-950/40"
+          >
+            Start Investing Now →
+          </a>
         </div>
       </div>
     </div>
