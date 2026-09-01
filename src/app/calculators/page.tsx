@@ -1,6 +1,6 @@
 "use client";
 
-import { useState } from "react";
+import { useState, Suspense } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import SectionHeading from "@/components/ui/SectionHeading";
 import SectionWrapper from "@/components/ui/SectionWrapper";
@@ -144,8 +144,16 @@ export default function CalculatorsPage() {
             transition={{ duration: 0.35, ease: "easeOut" }}
           >
             {activeTab === "inflation" && <InflationCalculator />}
-            {activeTab === "sip" && <SIPCalculator defaultTab="SIP" hideToggle />}
-            {activeTab === "lumpsum" && <SIPCalculator defaultTab="Lumpsum" hideToggle />}
+            {activeTab === "sip" && (
+              <Suspense fallback={<div className="h-96 flex items-center justify-center text-neutral-500 font-medium">Loading Calculator...</div>}>
+                <SIPCalculator defaultTab="SIP" hideToggle />
+              </Suspense>
+            )}
+            {activeTab === "lumpsum" && (
+              <Suspense fallback={<div className="h-96 flex items-center justify-center text-neutral-500 font-medium">Loading Calculator...</div>}>
+                <SIPCalculator defaultTab="Lumpsum" hideToggle />
+              </Suspense>
+            )}
             {activeTab === "retirement" && <RetirementCalculator />}
             {activeTab === "swp" && <SWPCalculator />}
             {activeTab === "stepup" && <StepUpCalculator />}
