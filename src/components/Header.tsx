@@ -33,14 +33,20 @@ export default function Header() {
 
   return (
     <header
-      className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 bg-white/95 backdrop-blur-md border-b border-neutral-100 ${
-        isScrolled ? 'shadow-sm' : ''
+      className={`fixed top-0 left-0 right-0 z-50 transition-all duration-500 border-b ${
+        isScrolled 
+          ? 'bg-white/65 backdrop-blur-xl border-white/20 shadow-[0_8px_30px_rgb(0,0,0,0.06)]' 
+          : 'bg-white border-neutral-100'
       }`}
     >
       <div className="container-narrow">
         <div className="flex items-center justify-between h-16 md:h-20">
           {/* Logo / Brand */}
-          <Link href="/" className="flex flex-col justify-center group" onClick={() => setIsOpen(false)}>
+          <Link 
+            href="/" 
+            className="flex flex-col justify-center group transform transition-transform duration-300 hover:scale-[1.03] active:scale-[0.98]" 
+            onClick={() => setIsOpen(false)}
+          >
             <span className="text-lg md:text-xl font-bold text-brand-900 font-heading tracking-tight leading-tight">
               VizagFinServ
             </span>
@@ -52,9 +58,10 @@ export default function Header() {
               <Link
                 key={item.href}
                 href={item.href}
-                className="px-3 py-2 text-sm font-medium text-neutral-700 hover:text-brand-800 transition-colors duration-200 rounded-md hover:bg-brand-50/60"
+                className="relative inline-block px-3 py-2 text-sm font-medium text-neutral-700 hover:text-brand-900 transition-all duration-300 group hover:-translate-y-0.5"
               >
                 {item.label}
+                <span className="absolute bottom-1 left-3 right-3 h-[2px] bg-brand-800 origin-left scale-x-0 transition-transform duration-300 ease-out group-hover:scale-x-100 rounded-full" />
               </Link>
             ))}
           </nav>
