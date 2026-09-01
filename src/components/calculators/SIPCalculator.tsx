@@ -18,9 +18,9 @@ const formatIndian = (value: number) => {
   return new Intl.NumberFormat("en-IN").format(value);
 };
 
-export default function SIPCalculator() {
+export default function SIPCalculator({ defaultTab = "SIP", hideToggle = false }: { defaultTab?: "SIP" | "Lumpsum"; hideToggle?: boolean }) {
   const searchParams = useSearchParams();
-  const [activeTab, setActiveTab] = useState<"SIP" | "Lumpsum">("SIP");
+  const [activeTab, setActiveTab] = useState<"SIP" | "Lumpsum">(defaultTab as "SIP" | "Lumpsum");
 
   // Sync tab with URL search parameter
   useEffect(() => {
@@ -142,23 +142,25 @@ export default function SIPCalculator() {
   return (
     <div className="bg-white rounded-2xl shadow-xl overflow-hidden border border-brand-100 max-w-5xl mx-auto">
       {/* Tab Toggle */}
-      <div className="flex p-6 pb-0 md:p-8 md:pb-0">
-        <div className="flex bg-brand-50 p-1 rounded-full">
-          {(["SIP", "Lumpsum"] as const).map((tab) => (
-            <button
-              key={tab}
-              onClick={() => setActiveTab(tab)}
-              className={`px-8 py-2.5 rounded-full text-sm font-semibold transition-all duration-300 cursor-pointer ${
-                activeTab === tab
-                  ? "bg-brand-900 text-white shadow-md"
-                  : "text-brand-800 hover:bg-brand-100"
-              }`}
-            >
-              {tab}
-            </button>
-          ))}
+      {!hideToggle && (
+        <div className="flex p-6 pb-0 md:p-8 md:pb-0">
+          <div className="flex bg-brand-50 p-1 rounded-full">
+            {(["SIP", "Lumpsum"] as const).map((tab) => (
+              <button
+                key={tab}
+                onClick={() => setActiveTab(tab)}
+                className={`px-8 py-2.5 rounded-full text-sm font-semibold transition-all duration-300 cursor-pointer ${
+                  activeTab === tab
+                    ? "bg-brand-900 text-white shadow-md"
+                    : "text-brand-800 hover:bg-brand-100"
+                }`}
+              >
+                {tab}
+              </button>
+            ))}
+          </div>
         </div>
-      </div>
+      )}
 
       <div className="p-6 md:p-8 md:pt-6 grid grid-cols-1 lg:grid-cols-12 gap-10">
         {/* Left Side: Inputs & Results */}
