@@ -8,7 +8,7 @@ import { PhoneIcon, MailIcon, MapPinIcon } from '@/components/ui/Icons';
 export default function FinalCTA() {
   return (
     <section className="relative py-20 md:py-28 overflow-hidden bg-brand-900">
-      {/* Background decoration */}
+      {/* Background decoration. */}
       <div className="absolute inset-0 pointer-events-none">
         <div className="absolute top-0 left-1/4 w-80 h-80 bg-brand-800/50 rounded-full blur-3xl" />
         <div className="absolute bottom-0 right-1/4 w-64 h-64 bg-brand-700/30 rounded-full blur-3xl" />
