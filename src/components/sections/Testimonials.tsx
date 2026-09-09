@@ -54,14 +54,19 @@ function StarRating({ rating }: { rating: number }) {
 
 export default function Testimonials() {
   return (
-    <SectionWrapper background="white" id="testimonials">
+    <SectionWrapper background="dark" id="testimonials" className="relative overflow-hidden">
+      {/* Ambient background glow */}
+      <div className="absolute top-0 right-0 w-[500px] h-[500px] bg-brand-500/10 rounded-full blur-[120px] -z-10 pointer-events-none" />
+      <div className="absolute bottom-0 left-0 w-[400px] h-[400px] bg-brand-400/10 rounded-full blur-[100px] -z-10 pointer-events-none" />
+
       <SectionHeading
         eyebrow="Testimonials"
         title="What our clients say"
         subtitle="Real experiences from families and individuals who trust us with their financial goals."
+        light={true}
       />
 
-      <div className="grid grid-cols-1 sm:grid-cols-2 gap-5 md:gap-6">
+      <div className="grid grid-cols-1 sm:grid-cols-2 gap-5 md:gap-8 max-w-5xl mx-auto">
         {TESTIMONIALS.map((testimonial, i) => (
           <motion.div
             key={testimonial.name}
@@ -69,7 +74,7 @@ export default function Testimonials() {
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 0.5, delay: i * 0.1 }}
-            className="group relative p-5 md:p-7 rounded-2xl bg-white border border-neutral-200 shadow-lg shadow-brand-900/5 hover:-translate-y-1 transition-all duration-300"
+            className="group relative p-6 md:p-8 rounded-2xl bg-white shadow-xl shadow-black/20 hover:-translate-y-2 hover:shadow-2xl hover:shadow-brand-900/40 transition-all duration-300"
           >
             {/* Quote icon */}
             <svg

@@ -49,10 +49,11 @@ export default function Button({
   className = '',
   ...props
 }: ButtonProps) {
+  const hasCustomDisplay = /\b(inline-flex|flex|hidden|inline-block|block|grid)\b/.test(className);
   const baseStyles =
-    'inline-flex items-center justify-center font-medium rounded-lg transition-all duration-200 ease-out focus-visible:outline-2 focus-visible:outline-brand-500 focus-visible:outline-offset-2 cursor-pointer whitespace-nowrap';
+    `${hasCustomDisplay ? '' : 'inline-flex '}items-center justify-center font-medium rounded-lg transition-all duration-200 ease-out focus-visible:outline-2 focus-visible:outline-brand-500 focus-visible:outline-offset-2 cursor-pointer whitespace-nowrap`;
 
-  const classes = `${baseStyles} ${variantStyles[variant]} ${sizeStyles[size]} ${className}`;
+  const classes = `${baseStyles} ${variantStyles[variant]} ${sizeStyles[size]} ${className}`.trim();
 
   if ('href' in props && props.href !== undefined) {
     const { href, ...rest } = props as ButtonAsLink;

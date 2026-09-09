@@ -24,11 +24,12 @@ const iconMap: Record<string, React.FC<{ className?: string }>> = {
 
 export default function ApproachWhyUs() {
   return (
-    <SectionWrapper background="light" id="approach-why-us">
+    <SectionWrapper background="dark" id="approach-why-us">
       <SectionHeading
         eyebrow="Why Work With Us"
         title="Built for trust, not transactions"
         subtitle="What makes our approach different—focused on relationships, transparency and your long-term financial well-being."
+        light={true}
       />
 
       <div className="max-w-4xl mx-auto">
@@ -42,18 +43,18 @@ export default function ApproachWhyUs() {
               whileInView={{ opacity: 1, x: 0 }}
               viewport={{ once: true }}
               transition={{ duration: 0.5, delay: i * 0.08 }}
-              className={`flex items-start gap-5 md:gap-8 p-5 md:p-6 rounded-2xl mb-4 transition-all duration-300 hover:bg-white hover:shadow-lg hover:shadow-brand-900/5 ${
+              className={`flex items-start gap-5 md:gap-8 p-6 md:p-8 rounded-2xl mb-6 bg-white shadow-xl shadow-black/20 transition-all duration-300 hover:-translate-y-2 hover:shadow-2xl hover:shadow-brand-900/30 ${
                 isEven ? '' : 'md:flex-row-reverse md:text-right'
               }`}
             >
-              <div className="shrink-0 w-12 h-12 rounded-xl bg-brand-900 text-white flex items-center justify-center shadow-md">
-                <IconComponent className="w-5 h-5" />
+              <div className="shrink-0 w-14 h-14 rounded-xl bg-brand-900 text-white flex items-center justify-center shadow-md">
+                <IconComponent className="w-6 h-6" />
               </div>
-              <div>
-                <h3 className="text-base md:text-lg font-semibold text-brand-900 mb-1">
+              <div className="flex-1">
+                <h3 className="text-lg md:text-xl font-bold text-brand-900 mb-2">
                   {item.title}
                 </h3>
-                <p className="text-sm text-neutral-600 leading-relaxed">
+                <p className="text-sm md:text-base text-neutral-600 leading-relaxed">
                   {item.description}
                 </p>
               </div>

@@ -151,7 +151,7 @@ export default function Footer() {
 
       {/* Copyright */}
       <div className="border-t border-brand-800/30">
-        <div className="container-narrow py-4">
+        <div className="container-narrow pt-4 pb-12 sm:pb-12">
           <div className="flex flex-col sm:flex-row items-center justify-between gap-2 text-xs text-brand-500">
             <p>© {currentYear} VizagFinServ. All rights reserved.</p>
             <p>{CONTACT.arn} | {CONTACT.euin}</p>
