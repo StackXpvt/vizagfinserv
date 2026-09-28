@@ -30,6 +30,13 @@
 
   --font-heading: var(--font-playfair), Georgia, 'Times New Roman', serif;
   --font-body: var(--font-inter), -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+
+  /* Card elevation, tinted with the brand navy rather than pure black so it
+     reads as depth instead of grey haze. Use shadow-card / shadow-card-lg. */
+  --shadow-card: 0 6px 20px rgba(15, 42, 74, 0.10);
+  --shadow-card-lg: 0 12px 28px rgba(15, 42, 74, 0.16);
+
+  --ease-out-expo: cubic-bezier(0.16, 1, 0.3, 1);
 }
 
 :root {

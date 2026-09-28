@@ -16,12 +16,22 @@ export const CONTACT = {
   phoneHref: 'tel:+919087859350',
   email: 'funds844@gmail.com',
   emailHref: 'mailto:funds844@gmail.com',
+  // Digits only, with country code — the format wa.me expects.
+  whatsapp: '919087859350',
   location: 'Visakhapatnam, Andhra Pradesh',
   arn: 'ARN 138117',
   euin: 'EUIN E233588',
   designation: 'AMFI-Registered Mutual Fund Distributor',
   since: '2018',
 } as const;
+
+// Office hours shown on the contact page.
+// PLACEHOLDER: these are not confirmed business hours. Replace before publishing.
+export const OFFICE_HOURS = [
+  { day: 'Monday – Friday', hours: '10:00 AM – 7:00 PM', closed: false },
+  { day: 'Saturday', hours: '10:00 AM – 4:00 PM', closed: false },
+  { day: 'Sunday', hours: 'Closed', closed: true },
+] as const;
 
 // Business statistics
 export const STATS = [
