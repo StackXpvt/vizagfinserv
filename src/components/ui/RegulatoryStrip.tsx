@@ -6,7 +6,7 @@ export default function RegulatoryStrip() {
     >
       <div className="container-narrow flex items-center justify-center">
         <p className="text-[11px] sm:text-xs md:text-sm font-medium tracking-wide text-white leading-normal">
-          AMFI-Registered Mutual Fund Distributor &middot; ARN 138117 | EUIN E233588
+          AMFI-Registered Mutual Fund Distributor &middot; ARN 138117 | EUIN E233588 &middot; AMFI-Registered SIF Distributor
         </p>
       </div>
     </aside>

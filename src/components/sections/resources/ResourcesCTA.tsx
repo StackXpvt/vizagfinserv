@@ -31,7 +31,7 @@ export default function ResourcesCTA() {
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
             <Button
               href="/calculators"
-              className="bg-white !text-brand-900 hover:bg-brand-50 hover:-translate-y-1 hover:shadow-xl hover:shadow-white/20 transition-all duration-300 font-semibold"
+              className="!bg-white !text-brand-900 hover:!bg-brand-50 hover:-translate-y-1 hover:shadow-xl hover:shadow-white/20 transition-all duration-300 font-semibold"
               size="lg"
             >
               Try Our Calculators
@@ -40,7 +40,7 @@ export default function ResourcesCTA() {
               href="/contact"
               variant="ghost"
               size="lg"
-              className="text-white border-2 border-brand-500/30 hover:border-brand-300 hover:bg-brand-800/50 hover:-translate-y-1 hover:shadow-lg transition-all duration-300"
+              className="!text-white border-2 border-brand-500/30 hover:border-brand-300 hover:!bg-brand-800/50 hover:!text-white hover:-translate-y-1 hover:shadow-lg transition-all duration-300"
             >
               Talk to Us
             </Button>

@@ -47,7 +47,7 @@ export default function StatCard({
     requestAnimationFrame(animate);
   }, [isInView, value, hasAnimated]);
 
-  // For "Since 2017", don't animate — just show the display value
+  // For "Since 2018", don't animate — just show the display value
   const isYear = label === 'Years of Service';
 
   return (

@@ -7,7 +7,7 @@ import WhyWorkWithUs from '@/components/sections/WhyWorkWithUs';
 export const metadata: Metadata = {
   title: 'About',
   description:
-    'Learn about VizagFinServ (Sasanapuri Sreekar), an AMFI-Registered Mutual Fund Distributor since 2017, based in Visakhapatnam, Andhra Pradesh. A multi-generational commitment to helping families invest.',
+    'Learn about VizagFinServ (Sasanapuri Sreekar), an AMFI-Registered Mutual Fund Distributor since 2018, based in Visakhapatnam, Andhra Pradesh. A multi-generational commitment to helping families invest.',
 };
 
 export default function AboutPage() {

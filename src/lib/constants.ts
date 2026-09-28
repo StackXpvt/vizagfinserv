@@ -20,12 +20,12 @@ export const CONTACT = {
   arn: 'ARN 138117',
   euin: 'EUIN E233588',
   designation: 'AMFI-Registered Mutual Fund Distributor',
-  since: '2017',
+  since: '2018',
 } as const;
 
 // Business statistics
 export const STATS = [
-  { label: 'Years of Service', value: 2017, prefix: 'Since ', suffix: '', display: 'Since 2017' },
+  { label: 'Years of Service', value: 2018, prefix: 'Since ', suffix: '', display: 'Since 2018' },
   { label: 'Assets Under Distribution', value: 140, prefix: '₹', suffix: '+ Cr', display: '₹140+ Cr' },
   { label: 'Families Served', value: 100, prefix: '', suffix: '+', display: '100+' },
   { label: 'Monthly SIP Book', value: 30, prefix: '₹', suffix: 'L+', display: '₹30L+' },

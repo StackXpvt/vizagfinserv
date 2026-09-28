@@ -1,4 +1,5 @@
 import Link from 'next/link';
+import Image from 'next/image';
 import { CONTACT, NAV_ITEMS, DISCLAIMERS } from '@/lib/constants';
 import { PhoneIcon, MailIcon, MapPinIcon } from '@/components/ui/Icons';
 
@@ -55,6 +56,14 @@ export default function Footer() {
             <ul className="space-y-2.5">
               <li>
                 <Link
+                  href="/commission-disclosure"
+                  className="text-sm text-brand-300 hover:text-white transition-colors duration-200"
+                >
+                  Commission Disclosure
+                </Link>
+              </li>
+              <li>
+                <Link
                   href="/risk-disclosures"
                   className="text-sm text-brand-300 hover:text-white transition-colors duration-200"
                 >
@@ -67,6 +76,14 @@ export default function Footer() {
                   className="text-sm text-brand-300 hover:text-white transition-colors duration-200"
                 >
                   Privacy Policy
+                </Link>
+              </li>
+              <li>
+                <Link
+                  href="/terms-and-conditions"
+                  className="text-sm text-brand-300 hover:text-white transition-colors duration-200"
+                >
+                  Terms & Conditions
                 </Link>
               </li>
               <li>
@@ -135,26 +152,45 @@ export default function Footer() {
         </div>
       </div>
 
-      {/* Disclosures */}
-      <div className="border-t border-brand-800/50">
-        <div className="container-narrow py-6">
-          <div className="space-y-3 text-xs text-brand-400 leading-relaxed">
-            <p className="font-semibold text-brand-300">
+      {/* Unified Disclosures & Copyright */}
+      <div className="border-t border-brand-800/50 bg-brand-950">
+        <div className="container-narrow pt-8 pb-24 sm:pb-12">
+          
+          {/* Detailed Disclosures */}
+          <div className="space-y-3 text-xs text-brand-400/80 leading-relaxed max-w-5xl text-center mx-auto mb-8">
+            <p className="font-medium text-brand-300/90">
               ⚠️ {DISCLAIMERS.riskWarning}
             </p>
-            <p>{DISCLAIMERS.regularPlan}</p>
-            <p>{DISCLAIMERS.notAdvisor}</p>
-            <p>{DISCLAIMERS.investmentRisk}</p>
+            <p>{DISCLAIMERS.regularPlan} {DISCLAIMERS.notAdvisor} {DISCLAIMERS.investmentRisk}</p>
           </div>
-        </div>
-      </div>
 
-      {/* Copyright */}
-      <div className="border-t border-brand-800/30">
-        <div className="container-narrow pt-4 pb-12 sm:pb-12">
-          <div className="flex flex-col sm:flex-row items-center justify-between gap-2 text-xs text-brand-500">
-            <p>© {currentYear} VizagFinServ. All rights reserved.</p>
-            <p>{CONTACT.arn} | {CONTACT.euin}</p>
+          {/* Quick Disclosures Links */}
+          <div className="text-center space-y-6 pt-6 border-t border-brand-800/30">
+            <p className="text-[11px] sm:text-xs text-brand-400 leading-relaxed max-w-5xl mx-auto">
+              Mutual Fund investments are subject to market risks. Please read all scheme related documents carefully before investing. Past performance is not indicative of future returns. | VizagFinServ &middot; AMFI Registered MF Distributor ({CONTACT.arn}) | <Link href="/risk-disclosures" className="hover:text-white transition-colors">Risk Disclosures</Link> &middot; <Link href="/commission-disclosure" className="hover:text-white transition-colors">Commission Disclosure</Link> &middot; <a href="https://scores.sebi.gov.in/" target="_blank" rel="noopener noreferrer" className="hover:text-white transition-colors">SEBI SCORES</a> &middot; <a href="https://smartodr.in/" target="_blank" rel="noopener noreferrer" className="hover:text-white transition-colors">SMART ODR</a>
+            </p>
+            
+            <div className="flex flex-col sm:flex-row items-center justify-center gap-3 sm:gap-6 pt-6 text-xs text-brand-500">
+              <p>&copy; {currentYear} VizagFinServ. All rights reserved.</p>
+              <span className="hidden sm:inline text-brand-700">&middot;</span>
+              <div className="flex items-center gap-2">
+                <span>Powered by</span>
+                <a 
+                  href="https://stackx.co.in/" 
+                  target="_blank" 
+                  rel="noopener noreferrer" 
+                  className="flex items-center hover:scale-110 hover:-translate-y-0.5 transition-all duration-300"
+                >
+                  <Image 
+                    src="/logos/stackx-logo.png" 
+                    alt="StackX Logo" 
+                    width={76} 
+                    height={30} 
+                    className="brightness-0 invert drop-shadow-[0_2px_4px_rgba(255,255,255,0.1)]" 
+                  />
+                </a>
+              </div>
+            </div>
           </div>
         </div>
       </div>

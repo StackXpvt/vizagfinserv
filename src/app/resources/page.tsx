@@ -1,5 +1,6 @@
 import type { Metadata } from 'next';
 import PageHero from '@/components/PageHero';
+import QuickLinks from '@/components/sections/resources/QuickLinks';
 import ResourcesGlossary from '@/components/sections/resources/ResourcesGlossary';
 import FAQ from '@/components/sections/FAQ';
 import OfficialResources from '@/components/sections/resources/OfficialResources';
@@ -19,6 +20,7 @@ export default function ResourcesPage() {
         title="Resources"
         subtitle="Educational articles, investor guides and financial literacy resources to help you understand mutual fund investing, goal planning and disciplined wealth building."
       />
+      <QuickLinks />
       <ResourcesGlossary />
       <FAQ />
       <OfficialResources />

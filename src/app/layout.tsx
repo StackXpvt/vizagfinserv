@@ -47,7 +47,7 @@ export const metadata: Metadata = {
     siteName: "VizagFinServ",
     title: "VizagFinServ | AMFI-Registered Mutual Fund Distributor",
     description:
-      "Helping families invest in mutual funds with clarity, discipline and a long-term approach. AMFI-Registered MFD since 2017.",
+      "Helping families invest in mutual funds with clarity, discipline and a long-term approach. AMFI-Registered MFD since 2018.",
     images: [
       {
         url: "/images/og-image.jpg",
@@ -114,7 +114,7 @@ export default function RootLayout({ children }: LayoutProps<"/">) {
                 name: "India",
               },
               serviceType: "Mutual Fund Distribution",
-              foundingDate: "2017",
+              foundingDate: "2018",
             }),
           }}
         />
