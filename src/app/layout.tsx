@@ -41,8 +41,8 @@ export const metadata: Metadata = {
     "best mutual fund distributor Andhra Pradesh",
   ],
   authors: [
-    { name: "Sasanapuri Sreekar", url: "https://vizagfinserv.com/about" },
-    { name: "VizagFinServ", url: "https://vizagfinserv.com" },
+    { name: "Sasanapuri Sreekar", url: "https://www.vizagfinserv.com/about" },
+    { name: "VizagFinServ", url: "https://www.vizagfinserv.com" },
   ],
   creator: "Sasanapuri Sreekar",
   publisher: "VizagFinServ",
@@ -54,14 +54,14 @@ export const metadata: Metadata = {
     address: false,
     telephone: false,
   },
-  metadataBase: new URL("https://vizagfinserv.com"),
+  metadataBase: new URL("https://www.vizagfinserv.com"),
   alternates: {
-    canonical: "https://vizagfinserv.com",
+    canonical: "https://www.vizagfinserv.com",
   },
   openGraph: {
     type: "website",
     locale: "en_IN",
-    url: "https://vizagfinserv.com",
+    url: "https://www.vizagfinserv.com",
     siteName: "VizagFinServ",
     title: "VizagFinServ — AMFI-Registered Mutual Fund Distributor | Visakhapatnam",
     description:
@@ -143,18 +143,18 @@ export default function RootLayout({
               "@graph": [
                 {
                   "@type": ["FinancialService", "Organization"],
-                  "@id": "https://vizagfinserv.com/#organization",
+                  "@id": "https://www.vizagfinserv.com/#organization",
                   "name": "VizagFinServ",
                   "legalName": "VizagFinServ",
                   "alternateName": "Vizag FinServ",
-                  "url": "https://vizagfinserv.com",
+                  "url": "https://www.vizagfinserv.com",
                   "logo": {
                     "@type": "ImageObject",
-                    "url": "https://vizagfinserv.com/images/og-image.jpg",
+                    "url": "https://www.vizagfinserv.com/images/og-image.jpg",
                     "width": 1200,
                     "height": 630,
                   },
-                  "image": "https://vizagfinserv.com/images/og-image.jpg",
+                  "image": "https://www.vizagfinserv.com/images/og-image.jpg",
                   "description":
                     "AMFI-Registered Mutual Fund Distributor (ARN 138117, EUIN E233588) helping 100+ families invest with clarity, discipline, and a long-term goal-based approach since 2018 in Visakhapatnam.",
                   "telephone": "+91 90878 59350",
@@ -172,11 +172,11 @@ export default function RootLayout({
                     "longitude": 83.2185,
                   },
                   "founder": {
-                    "@id": "https://vizagfinserv.com/#founder",
+                    "@id": "https://www.vizagfinserv.com/#founder",
                   },
                   "employee": [
                     {
-                      "@id": "https://vizagfinserv.com/#founder",
+                      "@id": "https://www.vizagfinserv.com/#founder",
                     },
                   ],
                   "areaServed": [
@@ -214,15 +214,15 @@ export default function RootLayout({
                 },
                 {
                   "@type": "Person",
-                  "@id": "https://vizagfinserv.com/#founder",
+                  "@id": "https://www.vizagfinserv.com/#founder",
                   "name": "Sasanapuri Sreekar",
                   "jobTitle": "Founder & AMFI-Registered Mutual Fund Distributor",
                   "identifier": "ARN-138117",
                   "worksFor": {
-                    "@id": "https://vizagfinserv.com/#organization",
+                    "@id": "https://www.vizagfinserv.com/#organization",
                   },
-                  "url": "https://vizagfinserv.com/about",
-                  "image": "https://vizagfinserv.com/images/about-portrait.webp",
+                  "url": "https://www.vizagfinserv.com/about",
+                  "image": "https://www.vizagfinserv.com/images/about-portrait.webp",
                   "knowsAbout": [
                     "Mutual Funds",
                     "Goal-Based Financial Planning",
@@ -233,12 +233,12 @@ export default function RootLayout({
                 },
                 {
                   "@type": "WebSite",
-                  "@id": "https://vizagfinserv.com/#website",
-                  "url": "https://vizagfinserv.com",
+                  "@id": "https://www.vizagfinserv.com/#website",
+                  "url": "https://www.vizagfinserv.com",
                   "name": "VizagFinServ",
                   "description": "AMFI-Registered Mutual Fund Distributor in Visakhapatnam",
                   "publisher": {
-                    "@id": "https://vizagfinserv.com/#organization",
+                    "@id": "https://www.vizagfinserv.com/#organization",
                   },
                   "inLanguage": "en-IN",
                 },

@@ -22,7 +22,7 @@ export const metadata: Metadata = {
     title: 'Contact VizagFinServ — Let\'s Talk About Your Financial Goals',
     description:
       'Call, email, WhatsApp, or visit. Start a no-obligation conversation about your mutual fund investment goals with an AMFI-Registered MFD in Visakhapatnam.',
-    url: 'https://vizagfinserv.com/contact',
+    url: 'https://www.vizagfinserv.com/contact',
     siteName: 'VizagFinServ',
     locale: 'en_IN',
     type: 'website',
@@ -41,7 +41,7 @@ export const metadata: Metadata = {
     description: 'Reach out for a no-obligation discussion about your investment goals. Call, email, or WhatsApp.',
     images: ['/images/og-image.jpg'],
   },
-  alternates: { canonical: 'https://vizagfinserv.com/contact' },
+  alternates: { canonical: 'https://www.vizagfinserv.com/contact' },
 };
 
 

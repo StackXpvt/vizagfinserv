@@ -4,7 +4,7 @@ ARN: 138117 (AMFI-Registered Mutual Fund Distributor)
 EUIN: E233588
 Location: Visakhapatnam, Andhra Pradesh, India
 Contact: funds844@gmail.com | +91 90878 59350
-Website: https://vizagfinserv.com/about
+Website: https://www.vizagfinserv.com/about
 
 /* ORGANIZATION */
 Name: VizagFinServ
@@ -14,7 +14,7 @@ Focus: Goal-Based Mutual Fund Planning, SIP, SWP, STP, Portfolio Reviews
 Assets Under Distribution: ₹140 Cr+
 Families Served: 100+
 City: Visakhapatnam, Andhra Pradesh, India
-Website: https://vizagfinserv.com
+Website: https://www.vizagfinserv.com
 
 /* SITE */
 Standards: HTML5, CSS3, Schema.org JSON-LD, OpenGraph, Web App Manifest

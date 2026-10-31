@@ -24,7 +24,7 @@ export const metadata: Metadata = {
     title: 'Our Approach — How VizagFinServ Builds Disciplined Portfolios',
     description:
       'Goals before products. Discipline over timing. Compounding through patience. Learn the four principles behind every portfolio we help build.',
-    url: 'https://vizagfinserv.com/our-approach',
+    url: 'https://www.vizagfinserv.com/our-approach',
     siteName: 'VizagFinServ',
     locale: 'en_IN',
     type: 'website',
@@ -36,7 +36,7 @@ export const metadata: Metadata = {
     description: 'Goals first, discipline always, compounding with patience. The philosophy behind 100+ family portfolios.',
     images: ['/images/philosophy.webp'],
   },
-  alternates: { canonical: 'https://vizagfinserv.com/our-approach' },
+  alternates: { canonical: 'https://www.vizagfinserv.com/our-approach' },
 };
 
 export default function OurApproachPage() {

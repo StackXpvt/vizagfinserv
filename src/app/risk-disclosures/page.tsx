@@ -16,12 +16,12 @@ export const metadata: Metadata = {
   openGraph: {
     title: 'Risk Disclosures — VizagFinServ',
     description: 'Understand the risks associated with mutual fund investments before you invest.',
-    url: 'https://vizagfinserv.com/risk-disclosures',
+    url: 'https://www.vizagfinserv.com/risk-disclosures',
     type: 'website',
     images: [{ url: '/images/og-image.jpg', width: 1200, height: 630, alt: 'VizagFinServ' }],
   },
   robots: { index: true, follow: true },
-  alternates: { canonical: 'https://vizagfinserv.com/risk-disclosures' },
+  alternates: { canonical: 'https://www.vizagfinserv.com/risk-disclosures' },
 };
 
 

@@ -26,7 +26,7 @@ export const metadata: Metadata = {
     title: 'Investor Resources — Glossary, FAQs & Official Links',
     description:
       'Everything you need to understand mutual fund investing: plain-language glossary, FAQs, and official AMFI/SEBI links — curated by VizagFinServ.',
-    url: 'https://vizagfinserv.com/resources',
+    url: 'https://www.vizagfinserv.com/resources',
     siteName: 'VizagFinServ',
     locale: 'en_IN',
     type: 'website',
@@ -45,7 +45,7 @@ export const metadata: Metadata = {
     description: 'Free investor education: mutual fund glossary, FAQs, and official AMFI/SEBI links.',
     images: ['/images/og-image.jpg'],
   },
-  alternates: { canonical: 'https://vizagfinserv.com/resources' },
+  alternates: { canonical: 'https://www.vizagfinserv.com/resources' },
 };
 
 export default function ResourcesPage() {

@@ -17,12 +17,12 @@ export const metadata: Metadata = {
   openGraph: {
     title: 'Investor Charter — VizagFinServ',
     description: 'Know your rights and responsibilities as a mutual fund investor, as mandated by SEBI & AMFI.',
-    url: 'https://vizagfinserv.com/investor-charter',
+    url: 'https://www.vizagfinserv.com/investor-charter',
     type: 'website',
     images: [{ url: '/images/og-image.jpg', width: 1200, height: 630, alt: 'VizagFinServ' }],
   },
   robots: { index: true, follow: true },
-  alternates: { canonical: 'https://vizagfinserv.com/investor-charter' },
+  alternates: { canonical: 'https://www.vizagfinserv.com/investor-charter' },
 };
 
 

@@ -32,7 +32,7 @@ export const metadata: Metadata = {
     title: 'VizagFinServ — AMFI-Registered Mutual Fund Distributor | Visakhapatnam',
     description:
       'Helping 100+ families invest with clarity, discipline, and a long-term approach. AMFI-Registered Mutual Fund Distributor (ARN 138117) since 2018.',
-    url: 'https://vizagfinserv.com',
+    url: 'https://www.vizagfinserv.com',
     siteName: 'VizagFinServ',
     locale: 'en_IN',
     type: 'website',
@@ -53,7 +53,7 @@ export const metadata: Metadata = {
     images: ['/images/og-image.jpg'],
   },
   alternates: {
-    canonical: 'https://vizagfinserv.com',
+    canonical: 'https://www.vizagfinserv.com',
   },
 };
 

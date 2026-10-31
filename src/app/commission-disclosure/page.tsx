@@ -17,12 +17,12 @@ export const metadata: Metadata = {
   openGraph: {
     title: 'Commission Disclosure — VizagFinServ',
     description: 'Full transparency on how we are compensated as an AMFI-Registered Mutual Fund Distributor.',
-    url: 'https://vizagfinserv.com/commission-disclosure',
+    url: 'https://www.vizagfinserv.com/commission-disclosure',
     type: 'website',
     images: [{ url: '/images/og-image.jpg', width: 1200, height: 630, alt: 'VizagFinServ' }],
   },
   robots: { index: true, follow: true },
-  alternates: { canonical: 'https://vizagfinserv.com/commission-disclosure' },
+  alternates: { canonical: 'https://www.vizagfinserv.com/commission-disclosure' },
 };
 
 

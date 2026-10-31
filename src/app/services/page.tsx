@@ -24,7 +24,7 @@ export const metadata: Metadata = {
     title: 'Mutual Fund Services — Goal-Based SIP, Lumpsum, SWP & More',
     description:
       'From SIP planning and lumpsum deployment to STP/SWP structuring and annual portfolio reviews — VizagFinServ distributes across 24+ AMC partners with a goal-first approach.',
-    url: 'https://vizagfinserv.com/services',
+    url: 'https://www.vizagfinserv.com/services',
     siteName: 'VizagFinServ',
     locale: 'en_IN',
     type: 'website',
@@ -36,7 +36,7 @@ export const metadata: Metadata = {
     description: 'Goal-based SIP, lumpsum, STP/SWP, and portfolio review services from an AMFI-Registered MFD in Visakhapatnam.',
     images: ['/images/services-hero.jpg'],
   },
-  alternates: { canonical: 'https://vizagfinserv.com/services' },
+  alternates: { canonical: 'https://www.vizagfinserv.com/services' },
 };
 
 export default function ServicesPage() {

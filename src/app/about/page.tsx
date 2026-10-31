@@ -24,7 +24,7 @@ export const metadata: Metadata = {
     title: 'About VizagFinServ — Meet the Distributor Behind 100+ Family Portfolios',
     description:
       'Sasanapuri Sreekar (ARN 138117) has been helping families in Visakhapatnam build disciplined mutual fund portfolios since 2018. ₹140 Cr+ under distribution, process-driven, goal-first.',
-    url: 'https://vizagfinserv.com/about',
+    url: 'https://www.vizagfinserv.com/about',
     siteName: 'VizagFinServ',
     locale: 'en_IN',
     type: 'profile',
@@ -36,7 +36,7 @@ export const metadata: Metadata = {
     description: 'Goal-based mutual fund distribution for 100+ families in Visakhapatnam since 2018. Meet the distributor.',
     images: ['/images/og-image.jpg'],
   },
-  alternates: { canonical: 'https://vizagfinserv.com/about' },
+  alternates: { canonical: 'https://www.vizagfinserv.com/about' },
 };
 
 export default function AboutPage() {

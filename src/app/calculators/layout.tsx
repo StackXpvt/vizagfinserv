@@ -21,7 +21,7 @@ export const metadata: Metadata = {
     title: 'Free Financial Calculators — Plan SIP, SWP, Retirement & Loans | VizagFinServ',
     description:
       'Plan your financial future with VizagFinServ\'s suite of free calculators: SIP, SWP, Step-Up SIP, Retirement Corpus, EMI, and Inflation.',
-    url: 'https://vizagfinserv.com/calculators',
+    url: 'https://www.vizagfinserv.com/calculators',
     siteName: 'VizagFinServ',
     locale: 'en_IN',
     type: 'website',
@@ -42,7 +42,7 @@ export const metadata: Metadata = {
     images: ['/images/og-image.jpg'],
   },
   alternates: {
-    canonical: 'https://vizagfinserv.com/calculators',
+    canonical: 'https://www.vizagfinserv.com/calculators',
   },
 };
 

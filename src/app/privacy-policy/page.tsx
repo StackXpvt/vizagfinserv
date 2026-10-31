@@ -8,12 +8,12 @@ export const metadata: Metadata = {
   openGraph: {
     title: 'Privacy Policy — VizagFinServ',
     description: 'How VizagFinServ collects, uses, and protects your personal information.',
-    url: 'https://vizagfinserv.com/privacy-policy',
+    url: 'https://www.vizagfinserv.com/privacy-policy',
     type: 'website',
     images: [{ url: '/images/og-image.jpg', width: 1200, height: 630, alt: 'VizagFinServ' }],
   },
   robots: { index: true, follow: true },
-  alternates: { canonical: 'https://vizagfinserv.com/privacy-policy' },
+  alternates: { canonical: 'https://www.vizagfinserv.com/privacy-policy' },
 };
 
 
